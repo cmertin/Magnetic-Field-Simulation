@@ -1,0 +1,6 @@
+To run this simulation, you need gnuplot and g++. Simply run the 
+Simulation.sh script with giving an argument for the run number.
+For example, running it as:
+sh ./Simulation.sh 104
+will run the simulation based on the paramters in Program/main.cpp,
+and will output the results into a folder named Run104.
