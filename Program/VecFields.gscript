@@ -1,0 +1,50 @@
+#!/bin/sh
+gnuplot -persist << PLOT
+### Normal Gnuplot Commands ###
+set terminal postscript color enhanced
+set output "$1Run$2_Solenoid-Vec.ps"
+set xlabel "Z (on-axis) /m"
+set ylabel "r (off-axis) /m"
+set title "Magnetic Field Vectors Of Solenoid"
+set xrange[-0.6:0.6]
+set yrange[-0.4:0.4]
+set object 1 rect from -.315,.0712 to .315,.1016 fs empty border 0
+set object 2 rect from -.315,-.0712 to .315,-.1016 fs empty border 0
+# Format for Vec Plot r:z:Br:Bz
+plot '$1Solenoid.dat' using 2:1:($4/6.00884*.02):($3/6.00884*.02) with vectors head filled lt 2 linecolor rgb "blue" notitle
+
+reset
+
+set terminal postscript color enhanced
+set output "$1Run$2_Helmholtz1-Vec.ps"
+set xlabel "Z (on-axis) /m"
+set ylabel "r (off-axis) /m"
+set title "Magnetic Field Vectors of Helmholtz 1"
+set xrange[1:1.6]
+set yrange[-0.3:0.3]
+set object 3 rect from 1.161,-.25 to 1.175,.25 fs empty border 0
+set object 4 rect from 1.425,-.25 to 1.4395,.25 fs empty border 0
+set object 5 rect from 1.224,-.2032 to 1.376,-.1382 fs empty border 1
+set object 6 rect from 1.224,.2032 to 1.376,.1382 fs empty border 1
+# Format for Vec Plot r:z:Br:Bz
+plot '$1Helmholtz1.dat' using 2:1:($4/.06*.045):($3/.06*.045) with vectors head filled lt 2 linecolor rgb "blue" notitle
+
+reset
+
+set terminal postscript color enhanced
+set output "$1Run$2_Simulation-Vec.ps"
+set xlabel "Z (on-axis /m)"
+set ylabel "r (off-axis) /m"
+set title "Magnetic Field Vectors after cancellation"
+set xrange[1:1.6]
+set yrange[-0.3:0.3]
+set object 7 rect from 1.161,-.25 to 1.175,.25 fs empty border 0
+set object 8 rect from 1.425,-.25 to 1.4395,.25 fs empty border 0
+set object 9 rect from 1.224,-.2032 to 1.376,-.1382 fs empty border 1
+set object 10 rect from 1.224,.2032 to 1.376,.1382 fs empty border 1
+# Format for Vec Plot r:z:Br:Bz
+plot '$1Simulation.dat' using 2:1:($4/.06*.045):($3/.06*.045) with vectors head filled lt 2 linecolor rgb "blue" notitle
+
+### End Gnuplot Commands ###
+
+PLOT

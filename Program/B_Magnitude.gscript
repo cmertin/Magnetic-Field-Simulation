@@ -1,0 +1,21 @@
+#!/bin/sh
+gnuplot -persist << PLOT
+### Normal Gnuplot Commands ###
+set terminal postscript color enhanced
+set output "$1Run$2_Solenoid-magnitude.ps"
+set xlabel "r (off-axis) /m"
+set ylabel "Z (on-axis) /m"
+set title "Solenoid B-Field"
+set pm3d
+unset surface
+set view map
+set contour
+set palette rgb 33,13,10
+# set palette gray
+set key outside
+set cblabel "B-field Magnitude /Tesla"
+#Format r:z:B_mag
+splot '$1Solenoid.dat' using 1:2:5  notitle w lines lw 0
+quit
+### End Gnuplot Commands ###
+PLOT
