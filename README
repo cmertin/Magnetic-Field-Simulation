@@ -4,3 +4,7 @@ For example, running it as:
 sh ./Simulation.sh 104
 will run the simulation based on the paramters in Program/main.cpp,
 and will output the results into a folder named Run104.
+
+Note: Depending on your version of Gnuplot, the plotting scripts may
+not work. If they don't, please just comment them out of the 
+Simulation.sh script.
