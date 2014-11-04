@@ -223,9 +223,9 @@ float SolenoidBField::Integrate(float (SolenoidBField::*Bxyz)(float *array, floa
 \******************************************************************/
 void SolenoidBField::SetCoilDimensions(struct B_var &objectCalc)
 {
-  this->xCoil = xCoil;
-  this->yCoil = yCoil;
-  this->zCoil = zCoil;
+  this->xCoil = objectCalc.xCoil;
+  this->yCoil = objectCalc.yCoil;
+  this->zCoil = objectCalc.zCoil;
   this->radius = objectCalc.coilRadius;
 }
 
